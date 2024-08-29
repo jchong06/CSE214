@@ -7,6 +7,10 @@ public class Applicant {
     String applicantCollege;
     String[] applicantSkills;
 
+    public Applicant(){
+
+    }
+
     public Applicant(String[] companyName, String applicantName, double applicantGPA, String applicantCollege, String[] applicantSkills) {
         this.companyName = companyName;
         this.applicantName = applicantName;
@@ -55,18 +59,44 @@ public class Applicant {
         this.applicantSkills = applicantSkills;
     }
 
-    public Object clone(String[] companyName, String applicantName, double applicantGPA, String applicantCollege, String[] applicantSkills) {
-        return new Applicant(companyName, applicantName, applicantGPA, applicantCollege, applicantSkills);
+    public Object clone() throws CloneNotSupportedException {
+        Object o = super.clone();
+        return o;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     @Override
     public String toString() {
-        return "Applicant{" +
-                "companyName=" + Arrays.toString(companyName) +
-                ", applicantName='" + applicantName + '\'' +
-                ", applicantGPA=" + applicantGPA +
-                ", applicantCollege='" + applicantCollege + '\'' +
-                ", applicantSkills=" + Arrays.toString(applicantSkills) +
-                '}';
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < 98; i++){
+            if (i == 0){
+                result.append(String.join(", ", companyName));
+                i += String.join(", ", companyName).length();
+            }
+            else if (i == 33){
+                result.append(applicantName);
+                i += applicantName.length();
+            }
+            else if (i == 48){
+                result.append(applicantGPA);
+                i += Double.toString(applicantGPA).length();
+            }
+            else if (i == 59){
+                result.append(applicantCollege);
+                i += applicantCollege.length();
+            }
+            else if (i == 76) {
+                result.append(String.join(", ", applicantSkills));
+                i += String.join(", ", applicantSkills).length();
+            }
+            else{
+                result.append(" ");
+            }
+        }
+        return result.toString();
     }
 }
