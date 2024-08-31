@@ -77,4 +77,15 @@ public class HiringTable {
         return a;
     }
 
+    public void print(Applicant[] a){
+        System.out.println("\nCompany                         Name          GPA       College         Skills");
+        System.out.println("--------------------------------------------------------------------------------------------------");
+        int idx = 0;
+        while (a[idx] != null){
+            System.out.println(a[idx]);
+            idx++;
+        }
+        System.out.println("\n");
+    }
+
 }

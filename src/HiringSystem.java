@@ -37,30 +37,43 @@ public class HiringSystem {
                 System.out.print("Enter Applicant College: ");
                 String college = input.nextLine();
 
-                int num = 0;
-                String[] companies = new String[3];
-                while (num < 3) {
-                    System.out.print("Enter up to " + (3 - num) + " Companies: ");
+                int num1 = 0;
+                String[] tempCompanies = new String[3];
+                while (num1 < 3) {
+                    System.out.print("Enter up to " + (3 - num1) + " Companies: ");
                     String comp = input.nextLine();
-                    if (comp.isEmpty()) {
+                    if (comp.trim().isEmpty()) {
                         break;
                     }
-                    companies[num] = comp;
-                    num++;
+                    tempCompanies[num1] = comp;
+                    num1++;
                 }
 
-                num = 0;
-                String[] skills = new String[3];
-                while (num < 3) {
-                    System.out.print("Enter up to " + (3 - num) + " Skills: ");
+                int num2 = 0;
+                String[] tempSkills = new String[3];
+                while (num1 < 3) {
+                    System.out.print("Enter up to " + (3 - num2) + " Skills: ");
                     String skill = input.nextLine();
                     if (skill.isEmpty()) {
                         break;
                     }
-                    skills[num] = skill;
-                    num++;
+                    tempSkills[num2] = skill;
+                    num2++;
                 }
-
+                String[] companies = new String[0];
+                if (num1 > 0) {
+                    companies = new String[num1];
+                    for (int i = 0; i < num1; i++) {
+                        companies[i] = tempCompanies[i];
+                    }
+                }
+                String[] skills = new String[0];
+                if (num2 > 0) {
+                    skills = new String[num2];
+                    for (int i = 0; i < num2; i++) {
+                        skills[i] = tempSkills[i];
+                    }
+                }
                 Applicant a = new Applicant(companies, name, gpa, college, skills);
                 h.addApplicant(a);
                 System.out.println("\nApplicant " + name + " has been successfully added to the hiring system.\n");
@@ -71,20 +84,23 @@ public class HiringSystem {
                 h.removeApplicant(remove);
                 System.out.println("\nApplicant " + remove + " has been successfully removed from the hiring system.\n");
             }
+            else if (option.equals("G")){
+                System.out.print("Enter Applicant Name: ");
+                String name = input.nextLine();
+                Applicant a = h.getApplicant(name);
+                System.out.println("\nApplicant Name: " + name + "\nApplicant Applying From: " + a.getCompanyName()[0] + "\nApplicant GPA: " + a.getApplicantGPA() + "\nApplicant College: " + a.getApplicantCollege() + "\nApplicant Skills: " + String.join(", ", a.getApplicantSkills()) + "\n");
+            }
             else if (option.equals("P")) {
-                System.out.println("\nCompany                         Name          GPA       College         Skills");
-                System.out.println("--------------------------------------------------------------------------------------------------");
-                for (int i = 0; i < h.size(); i++) {
-                    System.out.println(h.applicants[i]);
-                }
-                System.out.println("\n");
+                h.print(h.applicants);
+            }
+            else if (option.equals("RS")){
+
             }
             System.out.println(menu);
             System.out.print("Please enter a command: ");
             option = input.next().toUpperCase();
-            input.nextLine();  // Consume the leftover newline character after the option input
+            input.nextLine();
         }
-
-
+        System.out.println("Quitting program...");
     }
 }
