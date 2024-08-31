@@ -60,8 +60,8 @@ public class Applicant {
     }
 
     public Object clone() throws CloneNotSupportedException {
-        Object o = super.clone();
-        return o;
+        Object a = super.clone();
+        return a;
     }
 
     @Override
