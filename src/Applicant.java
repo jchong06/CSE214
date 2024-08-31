@@ -89,7 +89,7 @@ public class Applicant {
                 result.append(applicantCollege);
                 i += applicantCollege.length();
             }
-            else if (i == 76) {
+            else if (i == 78) {
                 result.append(String.join(", ", applicantSkills));
                 i += String.join(", ", applicantSkills).length();
             }

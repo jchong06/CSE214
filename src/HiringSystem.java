@@ -20,12 +20,12 @@ public class HiringSystem {
         System.out.print("Please enter a command: ");
         String option = input.next().toUpperCase();
         input.nextLine();  // Consume the leftover newline character after the option input
-        Applicant b = new Applicant(new String[]{"Google", "Meta"}, "Justin Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
-        h.addApplicant(b);
-        Applicant c = new Applicant(new String[]{"Google", "Meta"}, "Ryan Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
-        h.addApplicant(c);
-        Applicant d = new Applicant(new String[]{"Google", "Meta"}, "Jose Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
-        h.addApplicant(d);
+//        Applicant b = new Applicant(new String[]{"Google", "Meta"}, "Justin Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
+//        h.addApplicant(b);
+//        Applicant c = new Applicant(new String[]{"Google", "Meta"}, "Ryan Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
+//        h.addApplicant(c);
+//        Applicant d = new Applicant(new String[]{"Google", "Meta"}, "Jose Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
+//        h.addApplicant(d);
         while (!option.equals("Q")) {
             if (option.equals("A")) {
                 System.out.print("Enter Applicant Name: ");
@@ -51,7 +51,7 @@ public class HiringSystem {
 
                 int num2 = 0;
                 String[] tempSkills = new String[3];
-                while (num1 < 3) {
+                while (num2 < 3) {
                     System.out.print("Enter up to " + (3 - num2) + " Skills: ");
                     String skill = input.nextLine();
                     if (skill.isEmpty()) {
@@ -76,13 +76,13 @@ public class HiringSystem {
                 }
                 Applicant a = new Applicant(companies, name, gpa, college, skills);
                 h.addApplicant(a);
-                System.out.println("\nApplicant " + name + " has been successfully added to the hiring system.\n");
+                System.out.println("\nApplicant " + name + " has been successfully added to the hiring system\n");
             }
             else if (option.equals("R")){
                 System.out.print("Enter applicant name: ");
                 String remove = input.nextLine();
                 h.removeApplicant(remove);
-                System.out.println("\nApplicant " + remove + " has been successfully removed from the hiring system.\n");
+                System.out.println("\nApplicant " + remove + " has been successfully removed from the hiring system\n");
             }
             else if (option.equals("G")){
                 System.out.print("Enter Applicant Name: ");
@@ -95,6 +95,9 @@ public class HiringSystem {
             }
             else if (option.equals("RS")){
 
+            }
+            else if (option.equals("S")){
+                System.out.println("\nThere are " + h.size() + " applicants in the hiring system.\n");
             }
             System.out.println(menu);
             System.out.print("Please enter a command: ");
