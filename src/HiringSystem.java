@@ -20,20 +20,19 @@ public class HiringSystem {
         System.out.print("Please enter a command: ");
         String option = input.next().toUpperCase();
         input.nextLine();  // Consume the leftover newline character after the option input
-//        Applicant b = new Applicant(new String[]{"Google", "Meta"}, "Justin Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
-//        h.addApplicant(b);
-//        Applicant c = new Applicant(new String[]{"Google", "Meta"}, "Ryan Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
-//        h.addApplicant(c);
-//        Applicant d = new Applicant(new String[]{"Google", "Meta"}, "Jose Chong", 3.4, "Harvard", new String[]{"Code", "Talk"});
-//        h.addApplicant(d);
+        Applicant b = new Applicant(new String[]{"Google", "Meta"}, "Justin Chong", 3.4, "Harvard", new String[]{"Code", "Talk", "Eat"});
+        h.addApplicant(b);
+        Applicant c = new Applicant(new String[]{"Google", "Yahoo"}, "Ryan Chong", 3.7, "MIT", new String[]{"Code", "Talk", "Sleep"});
+        h.addApplicant(c);
+        Applicant d = new Applicant(new String[]{"Google", "Meta"}, "Jose Chong", 3.4, "Harvard", new String[]{"Core", "Talk"});
+        h.addApplicant(d);
         while (!option.equals("Q")) {
             if (option.equals("A")) {
                 System.out.print("Enter Applicant Name: ");
                 String name = input.nextLine();
                 System.out.print("Enter Applicant GPA: ");
                 double gpa = input.nextDouble();
-                input.nextLine();  // Consume the leftover newline character after the GPA input
-
+                input.nextLine();
                 System.out.print("Enter Applicant College: ");
                 String college = input.nextLine();
 
@@ -63,16 +62,12 @@ public class HiringSystem {
                 String[] companies = new String[0];
                 if (num1 > 0) {
                     companies = new String[num1];
-                    for (int i = 0; i < num1; i++) {
-                        companies[i] = tempCompanies[i];
-                    }
+                    System.arraycopy(tempCompanies, 0, companies, 0, num1);
                 }
                 String[] skills = new String[0];
                 if (num2 > 0) {
                     skills = new String[num2];
-                    for (int i = 0; i < num2; i++) {
-                        skills[i] = tempSkills[i];
-                    }
+                    System.arraycopy(tempSkills, 0, skills, 0, num2);
                 }
                 Applicant a = new Applicant(companies, name, gpa, college, skills);
                 h.addApplicant(a);
@@ -91,10 +86,34 @@ public class HiringSystem {
                 System.out.println("\nApplicant Name: " + name + "\nApplicant Applying From: " + a.getCompanyName()[0] + "\nApplicant GPA: " + a.getApplicantGPA() + "\nApplicant College: " + a.getApplicantCollege() + "\nApplicant Skills: " + String.join(", ", a.getApplicantSkills()) + "\n");
             }
             else if (option.equals("P")) {
-                h.print(h.applicants);
+                HiringTable.print(h.applicants);
             }
             else if (option.equals("RS")){
-
+                System.out.println("Enter a company to filter for: ");
+                String company = input.nextLine();
+                if (company.trim().isEmpty()) {
+                    company = null;
+                }
+                System.out.println("Enter a skill to filter for: ");
+                String skill = input.nextLine();
+                if (skill.trim().isEmpty()) {
+                    skill = null;
+                }
+                System.out.println("Enter a college to filter for: ");
+                String college = input.nextLine();
+                if (college.trim().isEmpty()) {
+                    college= null;
+                }
+                System.out.println("Enter the minimum GPA to filter for: ");
+                double GPA;
+                String gpaInput = input.nextLine();
+                if (gpaInput.trim().isEmpty()) {
+                    GPA = 0;
+                }
+                else {
+                    GPA = Double.parseDouble(gpaInput);
+                }
+                HiringTable.refineSearch(h, company, skill, college, GPA);
             }
             else if (option.equals("S")){
                 System.out.println("\nThere are " + h.size() + " applicants in the hiring system.\n");

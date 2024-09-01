@@ -22,7 +22,7 @@ public class HiringTable {
 
     public void addApplicant(Applicant newApplicant) throws FullTableException{
         if (size() < MAX_APPLICANTS){
-           applicants[size()] = newApplicant;
+            applicants[size()] = newApplicant;
         }
     }
 
@@ -52,24 +52,51 @@ public class HiringTable {
         throw new ApplicantNotFoundException();
     }
 
-    public static void refineSearch(HiringTable table, String company, String skill, String college, double GPA){
+    public static void refineSearch(HiringTable table, String company, String skill, String college, double GPA) {
         Applicant[] result = new Applicant[MAX_APPLICANTS];
+        Applicant[] filter = new Applicant[MAX_APPLICANTS];
         int index = 0;
-        for (int i = 0; i < table.applicants.length; i++){
-            if (Arrays.asList(table.applicants[i].getCompanyName()).contains(company)){
-                if (Arrays.asList(table.applicants[i].getApplicantSkills()).contains(skill)){
-                    if (Objects.equals(table.applicants[i].getApplicantCollege(), college)){
-                        if (table.applicants[i].getApplicantGPA() >= GPA){
-                            result[index] = table.applicants[i];
-                            index++;
-                        }
-                    }
+        for (int i = 0; i < filter.length; i++){
+            if (table.applicants[i] == null){
+                break;
+            }
+            filter[i] = table.applicants[i];
+        }
+        if (company != null) {
+            for (int i = 0; i < table.size(); i++) {
+                if (!Arrays.asList(filter[i].getCompanyName()).contains(company)) {
+                    filter[i] = null;
                 }
             }
         }
-        for (int i = 0; i < index; i++){
-            System.out.println(result[i]);
+        if (skill != null) {
+            for (int i = 0; i < filter.length; i++) {
+                if ((filter[i] != null) && (!(Arrays.asList(table.applicants[i].getApplicantSkills()).contains(skill)))){
+                    filter[i] = null;
+                }
+            }
         }
+        if (college != null){
+            for (int i = 0; i < filter.length; i++) {
+                if ((filter[i] != null) && (!Objects.equals(filter[i].getApplicantCollege(), college))){
+                    filter[i] = null;
+                }
+            }
+        }
+        if (GPA > 0){
+            for (int i = 0; i < filter.length; i++) {
+                if ((filter[i] != null) && (filter[i].getApplicantGPA() < GPA)){
+                    filter[i] = null;
+                }
+            }
+        }
+            for (int i = 0; i < filter.length; i++) {
+                if (filter[i] != null){
+                    result[index] = filter[i];
+                    index++;
+                }
+            }
+            print(result);
     }
 
     public Object clone() throws CloneNotSupportedException {
@@ -77,7 +104,7 @@ public class HiringTable {
         return a;
     }
 
-    public void print(Applicant[] a){
+    public static void print(Applicant[] a){
         System.out.println("\nCompany                         Name          GPA       College           Skills");
         System.out.println("--------------------------------------------------------------------------------------------------");
         int idx = 0;
