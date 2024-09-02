@@ -117,7 +117,7 @@ public class HiringSystem {
             }
             System.out.println(menu);
             System.out.print("Please enter a command: ");
-            option = input.next().toUpperCase();
+            option = input.nextLine().toUpperCase();
         }
         System.out.println("Quitting program...");
     }
