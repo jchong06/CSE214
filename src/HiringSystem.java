@@ -68,40 +68,40 @@ public class HiringSystem {
                 }
                 Applicant a = new Applicant(companies, name, gpa, college, skills);
                 h.addApplicant(a);
-                System.out.println("\nApplicant " + name + " has been successfully added to the hiring system\n");
+                System.out.println("Applicant " + name + " has been successfully added to the hiring system");
             }
             else if (option.equals("R")){
                 System.out.print("Enter applicant name: ");
                 String remove = input.nextLine();
                 h.removeApplicant(remove);
-                System.out.println("\nApplicant " + remove + " has been successfully removed from the hiring system\n");
+                System.out.println("Applicant " + remove + " has been successfully removed from the hiring system");
             }
             else if (option.equals("G")){
                 System.out.print("Enter Applicant Name: ");
                 String name = input.nextLine();
                 Applicant a = h.getApplicant(name);
-                System.out.println("\nApplicant Name: " + name + "\nApplicant Applying From: " + a.getCompanyName()[0] + "\nApplicant GPA: " + a.getApplicantGPA() + "\nApplicant College: " + a.getApplicantCollege() + "\nApplicant Skills: " + String.join(", ", a.getApplicantSkills()) + "\n");
+                System.out.println("Applicant Name: " + name + "\nApplicant Applying From: " + a.getCompanyName()[0] + "\nApplicant GPA: " + a.getApplicantGPA() + "\nApplicant College: " + a.getApplicantCollege() + "\nApplicant Skills: " + String.join(", ", a.getApplicantSkills()));
             }
             else if (option.equals("P")) {
                 HiringTable.print(h.applicants);
             }
             else if (option.equals("RS")){
-                System.out.println("Enter a company to filter for: ");
+                System.out.print("Enter a company to filter for: ");
                 String company = input.nextLine();
                 if (company.trim().isEmpty()) {
                     company = null;
                 }
-                System.out.println("Enter a skill to filter for: ");
+                System.out.print("Enter a skill to filter for: ");
                 String skill = input.nextLine();
                 if (skill.trim().isEmpty()) {
                     skill = null;
                 }
-                System.out.println("Enter a college to filter for: ");
+                System.out.print("Enter a college to filter for: ");
                 String college = input.nextLine();
                 if (college.trim().isEmpty()) {
                     college= null;
                 }
-                System.out.println("Enter the minimum GPA to filter for: ");
+                System.out.print("Enter the minimum GPA to filter for: ");
                 double GPA;
                 String gpaInput = input.nextLine();
                 if (gpaInput.trim().isEmpty()) {
@@ -113,7 +113,7 @@ public class HiringSystem {
                 HiringTable.refineSearch(h, company, skill, college, GPA);
             }
             else if (option.equals("S")){
-                System.out.println("\nThere are " + h.size() + " applicants in the hiring system.\n");
+                System.out.println("There are " + h.size() + " applicants in the hiring system.");
             }
             System.out.println(menu);
             System.out.print("Please enter a command: ");
