@@ -51,7 +51,7 @@ public class HiringTable {
         throw new ApplicantNotFoundException();
     }
 
-    public static void refineSearch(HiringTable table, String company, String skill, String college, double GPA) {
+    public static void refineSearch(HiringTable table, String company, String skill, String college, String GPA) {
         Applicant[] result = new Applicant[MAX_APPLICANTS];
         Applicant[] filter = new Applicant[MAX_APPLICANTS];
         int index = 0;
@@ -82,9 +82,9 @@ public class HiringTable {
                 }
             }
         }
-        if (GPA > 0){
+        if (GPA != null){
             for (int i = 0; i < filter.length; i++) {
-                if ((filter[i] != null) && (filter[i].getApplicantGPA() < GPA)){
+                if ((filter[i] != null) && (Double.parseDouble(filter[i].getApplicantGPA()) < Double.parseDouble(GPA))){
                     filter[i] = null;
                 }
             }

@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Applicant {
     String[] companyName;
     String applicantName;
-    double applicantGPA;
+    String applicantGPA;
     String applicantCollege;
     String[] applicantSkills;
 
@@ -11,7 +11,7 @@ public class Applicant {
 
     }
 
-    public Applicant(String[] companyName, String applicantName, double applicantGPA, String applicantCollege, String[] applicantSkills) {
+    public Applicant(String[] companyName, String applicantName, String applicantGPA, String applicantCollege, String[] applicantSkills) {
         this.companyName = companyName;
         this.applicantName = applicantName;
         this.applicantGPA = applicantGPA;
@@ -35,11 +35,11 @@ public class Applicant {
         this.applicantName = applicantName;
     }
 
-    public double getApplicantGPA() {
+    public String getApplicantGPA() {
         return applicantGPA;
     }
 
-    public void setApplicantGPA(double applicantGPA) {
+    public void setApplicantGPA(String applicantGPA) {
         this.applicantGPA = applicantGPA;
     }
 
@@ -83,7 +83,7 @@ public class Applicant {
             }
             else if (i == 48){
                 result.append(applicantGPA);
-                i += Double.toString(applicantGPA).length();
+                i += applicantGPA.length();
             }
             else if (i == 59){
                 result.append(applicantCollege);

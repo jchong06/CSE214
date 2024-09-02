@@ -66,7 +66,7 @@ public class HiringSystem {
                     skills = new String[num2];
                     System.arraycopy(tempSkills, 0, skills, 0, num2);
                 }
-                Applicant a = new Applicant(companies, name, gpa, college, skills);
+                Applicant a = new Applicant(companies, name, String.format("%.2f", gpa), college, skills);
                 h.addApplicant(a);
                 System.out.println("Applicant " + name + " has been successfully added to the hiring system");
             }
@@ -102,15 +102,11 @@ public class HiringSystem {
                     college= null;
                 }
                 System.out.print("Enter the minimum GPA to filter for: ");
-                double GPA;
                 String gpaInput = input.nextLine();
                 if (gpaInput.trim().isEmpty()) {
-                    GPA = 0;
+                    gpaInput = null;
                 }
-                else {
-                    GPA = Double.parseDouble(gpaInput);
-                }
-                HiringTable.refineSearch(h, company, skill, college, GPA);
+                HiringTable.refineSearch(h, company, skill, college, gpaInput);
             }
             else if (option.equals("S")){
                 System.out.println("There are " + h.size() + " applicants in the hiring system.");
