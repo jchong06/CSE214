@@ -27,7 +27,6 @@ public class HiringTable {
     }
 
     public void removeApplicant(String name) throws ApplicantNotFoundException {
-
         Applicant a = getApplicant(name);
         boolean check = false;
         int runs = size();
@@ -90,12 +89,12 @@ public class HiringTable {
                 }
             }
         }
-            for (int i = 0; i < filter.length; i++) {
-                if (filter[i] != null){
-                    result[index] = filter[i];
-                    index++;
-                }
+        for (Applicant applicant : filter) {
+            if (applicant != null) {
+                result[index] = applicant;
+                index++;
             }
+        }
             print(result);
     }
 

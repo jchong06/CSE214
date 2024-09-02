@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class HiringSystem {
@@ -35,7 +34,6 @@ public class HiringSystem {
                 input.nextLine();
                 System.out.print("Enter Applicant College: ");
                 String college = input.nextLine();
-
                 int num1 = 0;
                 String[] tempCompanies = new String[3];
                 while (num1 < 3) {
@@ -47,7 +45,6 @@ public class HiringSystem {
                     tempCompanies[num1] = comp;
                     num1++;
                 }
-
                 int num2 = 0;
                 String[] tempSkills = new String[3];
                 while (num2 < 3) {
