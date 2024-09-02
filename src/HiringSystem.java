@@ -18,13 +18,13 @@ public class HiringSystem {
         System.out.println(menu);
         System.out.print("Please enter a command: ");
         String option = input.next().toUpperCase();
-        input.nextLine();  // Consume the leftover newline character after the option input
-        Applicant b = new Applicant(new String[]{"Google", "Meta"}, "Justin Chong", 3.4, "Harvard", new String[]{"Code", "Talk", "Eat"});
-        h.addApplicant(b);
-        Applicant c = new Applicant(new String[]{"Google", "Yahoo"}, "Ryan Chong", 3.7, "MIT", new String[]{"Code", "Talk", "Sleep"});
-        h.addApplicant(c);
-        Applicant d = new Applicant(new String[]{"Google", "Meta"}, "Jose Chong", 3.4, "Harvard", new String[]{"Core", "Talk"});
-        h.addApplicant(d);
+        input.nextLine();
+//        Applicant b = new Applicant(new String[]{"Google", "Meta"}, "Justin Chong", 3.4, "Harvard", new String[]{"Code", "Talk", "Eat"});
+//        h.addApplicant(b);
+//        Applicant c = new Applicant(new String[]{"Google", "Yahoo"}, "Ryan Chong", 3.7, "MIT", new String[]{"Code", "Talk", "Sleep"});
+//        h.addApplicant(c);
+//        Applicant d = new Applicant(new String[]{"Google", "Meta"}, "Jose Chong", 3.4, "Harvard", new String[]{"Core", "Talk"});
+//        h.addApplicant(d);
         while (!option.equals("Q")) {
             if (option.equals("A")) {
                 System.out.print("Enter Applicant Name: ");
@@ -118,7 +118,6 @@ public class HiringSystem {
             System.out.println(menu);
             System.out.print("Please enter a command: ");
             option = input.next().toUpperCase();
-            input.nextLine();
         }
         System.out.println("Quitting program...");
     }
