@@ -19,7 +19,7 @@ public class HiringTable {
     /**
      * An array of {@code Applicant} objects representing the applicants in the hiring table.
      */
-    Applicant[] applicants;
+    private Applicant[] applicants;
 
     /**
      * The maximum number of skills an applicant can have.
@@ -41,6 +41,10 @@ public class HiringTable {
      */
     public HiringTable() {
         applicants = new Applicant[MAX_APPLICANTS];
+    }
+
+    public Applicant[] getApplicants() {
+        return applicants;
     }
 
     /**

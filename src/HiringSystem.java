@@ -58,8 +58,8 @@ public class HiringSystem {
                 String[] tempCompanies = new String[3];
                 while (num1 < 3) {
                     System.out.print("Enter up to " + (3 - num1) + " Companies: ");
-                    String comp = input.nextLine();
-                    if (comp.trim().isEmpty()) {
+                    String comp = input.nextLine().trim();
+                    if (comp.isEmpty()) {
                         break;
                     }
                     tempCompanies[num1] = comp;
@@ -88,22 +88,22 @@ public class HiringSystem {
                 }
                 Applicant a = new Applicant(companies, name, String.format("%.2f", gpa), college, skills);
                 h.addApplicant(a);
-                System.out.println("Applicant " + name + " has been successfully added to the hiring system");
+                System.out.println("\nApplicant " + name + " has been successfully added to the hiring system\n");
             }
             else if (option.equals("R")) {
                 System.out.print("Enter applicant name: ");
                 String remove = input.nextLine();
                 h.removeApplicant(remove);
-                System.out.println("Applicant " + remove + " has been successfully removed from the hiring system");
+                System.out.println("\nApplicant " + remove + " has been successfully removed from the hiring system\n");
             }
             else if (option.equals("G")) {
                 System.out.print("Enter Applicant Name: ");
                 String name = input.nextLine();
                 Applicant a = h.getApplicant(name);
-                System.out.println("Applicant Name: " + name + "\nApplicant Applying From: " + a.getCompanyName()[0] + "\nApplicant GPA: " + a.getApplicantGPA() + "\nApplicant College: " + a.getApplicantCollege() + "\nApplicant Skills: " + String.join(", ", a.getApplicantSkills()));
+                System.out.println("\nApplicant Name: " + name + "\nApplicant Applying From: " + a.getCompanyName()[0] + "\nApplicant GPA: " + a.getApplicantGPA() + "\nApplicant College: " + a.getApplicantCollege() + "\nApplicant Skills: " + String.join(", ", a.getApplicantSkills()) + "\n");
             }
             else if (option.equals("P")) {
-                HiringTable.print(h.applicants);
+                HiringTable.print(h.getApplicants());
             }
             else if (option.equals("RS")) {
                 System.out.print("Enter a company to filter for: ");

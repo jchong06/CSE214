@@ -16,27 +16,27 @@ public class Applicant {
     /**
      * An array of company names where the applicant has worked.
      */
-    String[] companyName;
+    private String[] companyName;
 
     /**
      * The name of the applicant.
      */
-    String applicantName;
+    private String applicantName;
 
     /**
      * The GPA of the applicant, represented as a string.
      */
-    String applicantGPA;
+    private String applicantGPA;
 
     /**
      * The name of the college the applicant attended.
      */
-    String applicantCollege;
+    private String applicantCollege;
 
     /**
      * An array of skills the applicant possesses.
      */
-    String[] applicantSkills;
+    private String[] applicantSkills;
 
     /**
      * Constructs an {@code Applicant} object with default values.
