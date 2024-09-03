@@ -1,6 +1,31 @@
 import java.util.Scanner;
+/**
+ * Name: Justin Chong
+ * Student ID: 116143020
+ * Recitation Number: R03
+ * TA: Veronica Oreshko
+ */
 
+/**
+ * The class Hiring System provides a console-based interface for managing a hiring table.
+ * It allows the user to add, remove, get, print, and refine searches for applicants, as well as
+ * manage backups of the hiring table. The program runs in a while loop, displaying a menu and executing
+ * commands based on user input until the user chooses to quit.
+ *
+ * @throws FullTableException if the hiring table is full and cannot add more applicants.
+ * @throws ApplicantNotFoundException if an operation targets an applicant that does not exist.
+ */
 public class HiringSystem {
+
+    /**
+     * The main method serves as the entry point of the application.
+     * It initializes the hiring table, displays a menu, and processes user commands
+     * in a loop until the user chooses to quit the program.
+     *
+     * @param args command-line arguments (not used).
+     * @throws FullTableException if the hiring table is full and cannot add more applicants.
+     * @throws ApplicantNotFoundException if an operation targets an applicant that does not exist.
+     */
     public static void main(String[] args) throws FullTableException, ApplicantNotFoundException {
         Scanner input = new Scanner(System.in);
         HiringTable h = new HiringTable();
@@ -19,12 +44,7 @@ public class HiringSystem {
         System.out.print("Please enter a command: ");
         String option = input.next().toUpperCase();
         input.nextLine();
-//        Applicant b = new Applicant(new String[]{"Google", "Meta"}, "Justin Chong", 3.4, "Harvard", new String[]{"Code", "Talk", "Eat"});
-//        h.addApplicant(b);
-//        Applicant c = new Applicant(new String[]{"Google", "Yahoo"}, "Ryan Chong", 3.7, "MIT", new String[]{"Code", "Talk", "Sleep"});
-//        h.addApplicant(c);
-//        Applicant d = new Applicant(new String[]{"Google", "Meta"}, "Jose Chong", 3.4, "Harvard", new String[]{"Core", "Talk"});
-//        h.addApplicant(d);
+
         while (!option.equals("Q")) {
             if (option.equals("A")) {
                 System.out.print("Enter Applicant Name: ");
@@ -70,13 +90,13 @@ public class HiringSystem {
                 h.addApplicant(a);
                 System.out.println("Applicant " + name + " has been successfully added to the hiring system");
             }
-            else if (option.equals("R")){
+            else if (option.equals("R")) {
                 System.out.print("Enter applicant name: ");
                 String remove = input.nextLine();
                 h.removeApplicant(remove);
                 System.out.println("Applicant " + remove + " has been successfully removed from the hiring system");
             }
-            else if (option.equals("G")){
+            else if (option.equals("G")) {
                 System.out.print("Enter Applicant Name: ");
                 String name = input.nextLine();
                 Applicant a = h.getApplicant(name);
@@ -85,7 +105,7 @@ public class HiringSystem {
             else if (option.equals("P")) {
                 HiringTable.print(h.applicants);
             }
-            else if (option.equals("RS")){
+            else if (option.equals("RS")) {
                 System.out.print("Enter a company to filter for: ");
                 String company = input.nextLine();
                 if (company.trim().isEmpty()) {
@@ -108,8 +128,11 @@ public class HiringSystem {
                 }
                 HiringTable.refineSearch(h, company, skill, college, gpaInput);
             }
-            else if (option.equals("S")){
+            else if (option.equals("S")) {
                 System.out.println("There are " + h.size() + " applicants in the hiring system.");
+            }
+            else if (option.equals("D")){
+
             }
             System.out.println(menu);
             System.out.print("Please enter a command: ");
