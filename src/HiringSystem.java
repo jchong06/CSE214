@@ -44,14 +44,6 @@ public class HiringSystem {
         System.out.print("Please enter a command: ");
         String option = input.next().toUpperCase();
         input.nextLine();
-        Applicant e = new Applicant(new String[]{"Facebook"}, "Mark Zuck", "3.99", "Harvard", new String[] {"Business Management"});
-        Applicant b = new Applicant(new String[]{"Apple", "Google","Two Sigma"}, "Steve Jobs", "3.98", "De Anza College", new String[] {"Ruby On Rails", "Java"});
-        Applicant c = new Applicant(new String[]{"Airbnb", "Facebook"}, "Henry White", "2.5", "NYIT", new String[] {"JavaScript"});
-        Applicant d = new Applicant(new String[]{"Quora", "Google", "Twitter"}, "Bob Chen", "3.6", "Stony Brook", new String[] {"Java", "C++", "C"});
-        h.addApplicant(e);
-        h.addApplicant(b);
-        h.addApplicant(c);
-        h.addApplicant(d);
         while (!option.equals("Q")) {
             if (option.equals("A")) {
                 System.out.print("Enter Applicant Name: ");
