@@ -187,10 +187,15 @@ public class HiringTable {
     }
 
     public boolean compareBackup(){
+        System.out.println(Arrays.asList(applicants));
+        System.out.println(Arrays.asList(backup.applicants));
         if (backup.size() != size()){
             return false;
         }
         for (int i = 0; i < size(); i++){
+            if (applicants[i] == null){
+                return false;
+            }
             if (!(applicants[i].equals(backup.applicants[i]))){
                 return false;
             }
@@ -199,7 +204,8 @@ public class HiringTable {
     }
 
     public void revertBackup(){
-        for (int i = 0; i < size(); i++){
+        int s = Math.max(backup.size, size());
+        for (int i = 0; i < s; i++){
             if (i < backup.size){
                 applicants[i] = backup.applicants[i];
             }
