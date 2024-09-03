@@ -20,6 +20,8 @@ public class HiringTable {
      * An array of {@code Applicant} objects representing the applicants in the hiring table.
      */
     private Applicant[] applicants;
+    private int size;
+    private HiringTable backup;
 
     /**
      * The maximum number of skills an applicant can have.
@@ -41,6 +43,7 @@ public class HiringTable {
      */
     public HiringTable() {
         applicants = new Applicant[MAX_APPLICANTS];
+        size = 0;
     }
 
     public Applicant[] getApplicants() {
@@ -53,12 +56,11 @@ public class HiringTable {
      * @return the number of applicants in the table.
      */
     public int size() {
-        for (int i = 0; i < applicants.length; i++) {
-            if (applicants[i] == null) {
-                return i;
-            }
-        }
-        return applicants.length;
+        return size;
+    }
+
+    public void setSize(int s){
+        size = s;
     }
 
     /**
@@ -70,6 +72,7 @@ public class HiringTable {
     public void addApplicant(Applicant newApplicant) throws FullTableException {
         if (size() < MAX_APPLICANTS) {
             applicants[size()] = newApplicant;
+            size++;
         }
         else{
             throw new FullTableException("There is no more room in the Hiring Table for new Applicants");
@@ -96,6 +99,7 @@ public class HiringTable {
                 applicants[i] = null;
             }
         }
+        size--;
     }
 
     /**
@@ -173,16 +177,40 @@ public class HiringTable {
         print(result);
     }
 
-    /**
-     * Clones the current {@code HiringTable} object. This method creates a shallow copy of the table.
-     *
-     * @return a clone of the current {@code HiringTable} object.
-     * @throws CloneNotSupportedException if cloning is not supported.
-     */
-    public Object clone() throws CloneNotSupportedException {
-        Object a = super.clone();
-        return a;
+    public Object clone() {
+        backup = new HiringTable();
+        for (int i =0; i < size(); i++){
+            backup.applicants[i] = applicants[i];
+        }
+        backup.setSize(size());
+        return (Object) backup;
     }
+
+    public boolean compareBackup(){
+        if (backup.size() != size()){
+            return false;
+        }
+        for (int i = 0; i < size(); i++){
+            if (!(applicants[i].equals(backup.applicants[i]))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void revertBackup(){
+        for (int i = 0; i < size(); i++){
+            if (i < backup.size){
+                applicants[i] = backup.applicants[i];
+            }
+            else{
+                applicants[i] = null;
+            }
+        }
+        setSize(backup.size);
+    }
+
+
 
     /**
      * Prints the list of applicants in a formatted manner.

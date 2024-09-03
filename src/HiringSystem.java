@@ -36,7 +36,7 @@ public class HiringSystem {
                 "(P) Print List\n" +
                 "(RS) Refine Search\n" +
                 "(S) Size\n" +
-                "(D) Backup\n" +
+                "(B) Backup\n" +
                 "(CB) Compare Backup\n" +
                 "(RB) Revert Backup\n" +
                 "(Q) Quit";
@@ -69,7 +69,7 @@ public class HiringSystem {
                 String[] tempSkills = new String[3];
                 while (num2 < 3) {
                     System.out.print("Enter up to " + (3 - num2) + " Skills: ");
-                    String skill = input.nextLine();
+                    String skill = input.nextLine().trim();
                     if (skill.isEmpty()) {
                         break;
                     }
@@ -131,8 +131,22 @@ public class HiringSystem {
             else if (option.equals("S")) {
                 System.out.println("There are " + h.size() + " applicants in the hiring system.");
             }
-            else if (option.equals("D")){
-
+            else if (option.equals("B")){
+                Object backup = h.clone();
+                System.out.println("\nSuccessfully created backup.\n");
+            }
+            else if (option.equals("CB")){
+                boolean comparison = h.compareBackup();
+                if (comparison){
+                    System.out.println("Current list is the same as the backup copy.");
+                }
+                else{
+                    System.out.println("Current list is not the same as the backup copy.");
+                }
+            }
+            else if (option.equals("RB")){
+                h.revertBackup();
+                System.out.println("Successfully reverted to the backup copy.");
             }
             System.out.println(menu);
             System.out.print("Please enter a command: ");

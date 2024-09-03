@@ -151,15 +151,14 @@ public class Applicant {
         this.applicantSkills = applicantSkills;
     }
 
-    /**
-     * Creates a shallow copy of the {@code Applicant} object.
-     *
-     * @return a clone of the {@code Applicant} object.
-     * @throws CloneNotSupportedException if cloning is not supported.
-     */
-    public Object clone() throws CloneNotSupportedException {
-        Object a = super.clone();
-        return a;
+    public Object clone() {
+        Applicant a = new Applicant();
+        a.setApplicantName(getApplicantName());
+        a.setApplicantGPA(getApplicantGPA());
+        a.setApplicantCollege(getApplicantCollege());
+        a.setApplicantSkills(getApplicantSkills());
+        a.setCompanyName(getCompanyName());
+        return (Object) a;
     }
 
     /**
