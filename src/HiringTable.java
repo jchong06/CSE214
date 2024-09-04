@@ -187,8 +187,6 @@ public class HiringTable {
     }
 
     public boolean compareBackup(){
-        System.out.println(Arrays.asList(applicants));
-        System.out.println(Arrays.asList(backup.applicants));
         if (backup.size() != size()){
             return false;
         }
