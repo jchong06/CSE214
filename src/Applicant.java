@@ -39,13 +39,13 @@ public class Applicant {
     private String[] applicantSkills;
 
     /**
-     * Constructs an {@code Applicant} object with default values.
+     * Constructs an Applicant object with default values.
      */
     public Applicant() {
     }
 
     /**
-     * Constructs an {@code Applicant} object with the specified details.
+     * Constructs an Applicant object with the specified details.
      *
      * @param companyName      the list of companies where the applicant has worked.
      * @param applicantName    the name of the applicant.
@@ -162,10 +162,10 @@ public class Applicant {
     }
 
     /**
-     * Compares this {@code Applicant} object to another object for equality.
+     * Compares this Applicant object to another object for equality.
      *
      * @param obj the object to compare with.
-     * @return {@code true} if the objects are equal, {@code false} otherwise.
+     * @return true if the objects are equal, false otherwise.
      */
     @Override
     public boolean equals(Object obj) {

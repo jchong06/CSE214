@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 
 /**
- * The Hiring Table class represents a collection of {@code Applicant} objects.
+ * The Hiring Table class represents a collection of Applicant objects.
  * It allows adding, removing, searching, refining search results, and printing the list
  * of applicants. The table can store a maximum of 50 applicants, and each applicant can have
  * up to 3 skills and 3 companies associated with them.
@@ -17,7 +17,7 @@ import java.util.Objects;
 public class HiringTable {
 
     /**
-     * An array of {@code Applicant} objects representing the applicants in the hiring table.
+     * An array of Applicant objects representing the applicants in the hiring table.
      */
     private Applicant[] applicants;
     private int size;
@@ -39,7 +39,7 @@ public class HiringTable {
     static final int MAX_APPLICANTS = 50;
 
     /**
-     * Constructs a new {@code HiringTable} with an array to hold up to 50 applicants.
+     * Constructs a new Hiring Table with an array to hold up to 50 applicants.
      */
     public HiringTable() {
         applicants = new Applicant[MAX_APPLICANTS];
@@ -66,7 +66,7 @@ public class HiringTable {
     /**
      * Adds a new applicant to the hiring table.
      *
-     * @param newApplicant the {@code Applicant} object to be added.
+     * @param newApplicant the Applicant object to be added.
      * @throws FullTableException if the table is full and no more applicants can be added.
      */
     public void addApplicant(Applicant newApplicant) throws FullTableException {
@@ -105,7 +105,7 @@ public class HiringTable {
      * Retrieves an applicant from the hiring table by their name.
      *
      * @param name the name of the applicant to retrieve.
-     * @return the {@code Applicant} object with the given name.
+     * @return the Applicant object with the given name.
      * @throws ApplicantNotFoundException if no applicant with the given name is found.
      */
     public Applicant getApplicant(String name) throws ApplicantNotFoundException {
@@ -123,11 +123,11 @@ public class HiringTable {
      * Filters the list of applicants based on the specified company, skill, college, and GPA.
      * Prints the filtered list of applicants.
      *
-     * @param table the {@code HiringTable} object containing the list of applicants.
-     * @param company the company to filter by, or {@code null} to skip this filter.
-     * @param skill the skill to filter by, or {@code null} to skip this filter.
-     * @param college the college to filter by, or {@code null} to skip this filter.
-     * @param GPA the minimum GPA to filter by, or {@code null} to skip this filter.
+     * @param table the Hiring Table object containing the list of applicants.
+     * @param company the company to filter by, or null to skip this filter.
+     * @param skill the skill to filter by, or null to skip this filter.
+     * @param college the college to filter by, or null to skip this filter.
+     * @param GPA the minimum GPA to filter by, or null to skip this filter.
      */
     public static void refineSearch(HiringTable table, String company, String skill, String college, String GPA) {
         Applicant[] result = new Applicant[MAX_APPLICANTS];
@@ -195,7 +195,7 @@ public class HiringTable {
      * Compares the current HiringTable with the backup table to determine if they are identical.
      * Checks if the number of applicants and the applicants themselves are the same in both the current and backup tables.
      *
-     * @return {@code true} if the current HiringTable is identical to the backup, {@code false} otherwise.
+     * @return true if the current HiringTable is identical to the backup, false otherwise.
      */
     public boolean compareBackup() {
         if (backup.size() != size()) {
@@ -232,7 +232,7 @@ public class HiringTable {
     /**
      * Prints the list of applicants in a formatted manner.
      *
-     * @param a an array of {@code Applicant} objects to print.
+     * @param a an array of Applicant objects to print.
      */
     public static void print(Applicant[] a) {
         System.out.println("\nCompany                         Name          GPA       College           Skills");
