@@ -75,7 +75,7 @@ public class HiringTable {
             size++;
         }
         else{
-            throw new FullTableException("There is no more room in the Hiring Table for new Applicants");
+            throw new FullTableException("Hiring table is full. Cannot add more applicants.");
         }
     }
 
@@ -88,8 +88,7 @@ public class HiringTable {
     public void removeApplicant(String name) throws ApplicantNotFoundException {
         Applicant a = getApplicant(name);
         boolean check = false;
-        int runs = size();
-        for (int i = 0; i < runs; i++) {
+        for (int i = 0; i < size(); i++) {
             if (check) {
                 applicants[i - 1] = applicants[i];
                 applicants[i] = null;
@@ -111,13 +110,13 @@ public class HiringTable {
      */
     public Applicant getApplicant(String name) throws ApplicantNotFoundException {
         if (size() > 0){
-            for (Applicant a : applicants) {
-                if (Objects.equals(a.getApplicantName(), name)) {
-                    return a;
+            for (int i = 0; i < size(); i++) {
+                if (Objects.equals(applicants[i].getApplicantName(), name)) {
+                    return applicants[i];
                 }
             }
         }
-        throw new ApplicantNotFoundException("Applicant with the given name was not found");
+        throw new ApplicantNotFoundException("Applicant with the given name was not found.");
     }
 
     /**
@@ -177,44 +176,58 @@ public class HiringTable {
         print(result);
     }
 
+    /**
+     * Creates a clone of the current HiringTable and stores it as a backup.
+     * The backup contains the current list of applicants and the current size of the HiringTable.
+     *
+     * @return the backup HiringTable object.
+     */
     public Object clone() {
         backup = new HiringTable();
-        for (int i =0; i < size(); i++){
+        for (int i = 0; i < size(); i++) {
             backup.applicants[i] = applicants[i];
         }
         backup.setSize(size());
         return (Object) backup;
     }
 
-    public boolean compareBackup(){
-        if (backup.size() != size()){
+    /**
+     * Compares the current HiringTable with the backup table to determine if they are identical.
+     * Checks if the number of applicants and the applicants themselves are the same in both the current and backup tables.
+     *
+     * @return {@code true} if the current HiringTable is identical to the backup, {@code false} otherwise.
+     */
+    public boolean compareBackup() {
+        if (backup.size() != size()) {
             return false;
         }
-        for (int i = 0; i < size(); i++){
-            if (applicants[i] == null){
+        for (int i = 0; i < size(); i++) {
+            if (applicants[i] == null) {
                 return false;
             }
-            if (!(applicants[i].equals(backup.applicants[i]))){
+            if (!(applicants[i].equals(backup.applicants[i]))) {
                 return false;
             }
         }
         return true;
     }
 
-    public void revertBackup(){
+    /**
+     * Reverts the current HiringTable to the state stored in the backup.
+     * Restores the list of applicants and the size of the table from the backup.
+     * If the backup is smaller than the current table, extra entries are removed.
+     */
+    public void revertBackup() {
         int s = Math.max(backup.size, size());
-        for (int i = 0; i < s; i++){
-            if (i < backup.size){
+        for (int i = 0; i < s; i++) {
+            if (i < backup.size) {
                 applicants[i] = backup.applicants[i];
-            }
-            else{
+            } else {
                 applicants[i] = null;
             }
         }
         setSize(backup.size);
     }
-
-
 
     /**
      * Prints the list of applicants in a formatted manner.

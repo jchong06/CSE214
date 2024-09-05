@@ -26,7 +26,7 @@ public class HiringSystem {
      * @throws FullTableException if the hiring table is full and cannot add more applicants.
      * @throws ApplicantNotFoundException if an operation targets an applicant that does not exist.
      */
-    public static void main(String[] args) throws FullTableException, ApplicantNotFoundException {
+    public static void main(String[] args) throws FullTableException, ApplicantNotFoundException, InvalidInputException {
         Scanner input = new Scanner(System.in);
         HiringTable h = new HiringTable();
         String[] options = {"A", "R", "G", "P", "RS", "S", "D", "CB", "RB", "Q"};
@@ -49,8 +49,13 @@ public class HiringSystem {
                 System.out.print("Enter Applicant Name: ");
                 String name = input.nextLine();
                 System.out.print("Enter Applicant GPA: ");
-                double gpa = input.nextDouble();
-                input.nextLine();
+                String gpaInput = input.nextLine();
+                double gpa = 0;
+                try {
+                    gpa = Double.parseDouble(gpaInput);
+                } catch (NumberFormatException ignore){
+                    System.out.println("Invalid Input!");
+                }
                 System.out.print("Enter Applicant College: ");
                 String college = input.nextLine();
                 int num1 = 0;
@@ -87,13 +92,13 @@ public class HiringSystem {
                 }
                 Applicant a = new Applicant(companies, name, String.format("%.2f", gpa), college, skills);
                 h.addApplicant(a);
-                System.out.println("\nApplicant " + name + " has been successfully added to the hiring system\n");
+                System.out.println("\nApplicant " + name + " has been successfully added to the hiring system.\n");
             }
             else if (option.equals("R")) {
                 System.out.print("Enter applicant name: ");
                 String remove = input.nextLine();
                 h.removeApplicant(remove);
-                System.out.println("\nApplicant " + remove + " has been successfully removed from the hiring system\n");
+                System.out.println("\nApplicant " + remove + " has been successfully removed from the hiring system.\n");
             }
             else if (option.equals("G")) {
                 System.out.print("Enter Applicant Name: ");
@@ -128,7 +133,7 @@ public class HiringSystem {
                 HiringTable.refineSearch(h, company, skill, college, gpaInput);
             }
             else if (option.equals("S")) {
-                System.out.println("There are " + h.size() + " applicants in the hiring system.");
+                System.out.println("\nThere are " + h.size() + " applicants in the hiring system.\n");
             }
             else if (option.equals("B")){
                 Object backup = h.clone();
@@ -137,15 +142,15 @@ public class HiringSystem {
             else if (option.equals("CB")){
                 boolean comparison = h.compareBackup();
                 if (comparison){
-                    System.out.println("Current list is the same as the backup copy.");
+                    System.out.println("\nCurrent list is the same as the backup copy.\n");
                 }
                 else{
-                    System.out.println("Current list is not the same as the backup copy.");
+                    System.out.println("\nCurrent list is not the same as the backup copy.\n");
                 }
             }
             else if (option.equals("RB")){
                 h.revertBackup();
-                System.out.println("Successfully reverted to the backup copy.");
+                System.out.println("\nSuccessfully reverted to the backup copy.\n");
             }
             System.out.println(menu);
             System.out.print("Please enter a command: ");
