@@ -1,10 +1,12 @@
 import java.util.Scanner;
 /**
  * @author Justin Chong
+ * Email: justin.chong@stonybrook.edu
  * Student ID: 116143020
- * Recitation Number: R03
+ * Recitation Number: CSE 214 R03
  * TA: Veronica Oreshko
  */
+
 
 /**
  * The class Hiring System provides a console-based interface for managing a hiring table.

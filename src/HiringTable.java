@@ -2,10 +2,12 @@ import java.util.Arrays;
 import java.util.Objects;
 /**
  * @author Justin Chong
+ * Email: justin.chong@stonybrook.edu
  * Student ID: 116143020
- * Recitation Number: R03
+ * Recitation Number: CSE 214 R03
  * TA: Veronica Oreshko
  */
+
 
 /**
  * The Hiring Table class represents a collection of Applicant objects.
