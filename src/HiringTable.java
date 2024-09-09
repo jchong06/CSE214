@@ -11,7 +11,7 @@ import java.util.Objects;
  * The Hiring Table class represents a collection of Applicant objects.
  * It allows adding, removing, searching, refining search results, and printing the list
  * of applicants. The table can store a maximum of 50 applicants, and each applicant can have
- * up to 3 skills and 3 companies associated with them.
+ * up to 3 skills and 3 companies.
  *
  */
 public class HiringTable {
@@ -46,6 +46,12 @@ public class HiringTable {
         size = 0;
     }
 
+    /**
+     * Returns the applicants in the hiring table.
+     *
+     * @return the list of applicants in the hiring table.
+     */
+
     public Applicant[] getApplicants() {
         return applicants;
     }
@@ -59,6 +65,10 @@ public class HiringTable {
         return size;
     }
 
+    /**
+     * Sets the numerical value for the size of a table.
+     * @param s
+     */
     public void setSize(int s){
         size = s;
     }

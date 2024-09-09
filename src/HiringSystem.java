@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class HiringSystem {
 
     /**
-     * The main method serves as the entry point of the application.
+     * The main method is the runner application.
      * It initializes the hiring table, displays a menu, and processes user commands
      * in a loop until the user chooses to quit the program.
      *
