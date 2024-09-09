@@ -169,7 +169,11 @@ public class Applicant {
      */
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (obj instanceof Applicant){
+            Applicant a = (Applicant) obj;
+            return this.applicantName.equals(a.applicantName) && this.applicantCollege.equals(a.applicantCollege) && this.applicantGPA.equals(a.applicantGPA) && this.applicantSkills.equals(a.applicantSkills) && this.companyName.equals(a.companyName);
+        }
+        return false;
     }
 
     /**
