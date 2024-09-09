@@ -1,6 +1,6 @@
 import java.util.Arrays;
 /**
- * Name: Justin Chong
+ * @author Justin Chong
  * Student ID: 116143020
  * Recitation Number: R03
  * TA: Veronica Oreshko
